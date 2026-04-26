@@ -1,0 +1,23 @@
+export const SITE = {
+  website: "https://chaitanya-19.github.io/",
+  author: "Chaitanya",
+  profile: "https://chaitanya-19.github.io/",
+  desc: "Notes on LLM internals, inference, and AI infrastructure.",
+  title: "Chaitanya",
+  ogImage: "astropaper-og.jpg",
+  lightAndDarkMode: true,
+  postPerIndex: 4,
+  postPerPage: 8,
+  scheduledPostMargin: 15 * 60 * 1000,
+  showArchives: true,
+  showBackButton: true,
+  editPost: {
+    enabled: false,
+    text: "Edit page",
+    url: "",
+  },
+  dynamicOgImage: true,
+  dir: "ltr",
+  lang: "en",
+  timezone: "America/Los_Angeles",
+} as const;

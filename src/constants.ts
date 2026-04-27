@@ -16,30 +16,34 @@ interface Social {
   icon: (_props: Props) => Element;
 }
 
-export const SOCIALS: Social[] = [
+export const SOCIALS = [
   {
-    name: "GitHub",
-    href: "https://github.com/satnaing/astro-paper",
+    name: "Github",
+    href: "https://github.com/chaitanya-19",
     linkTitle: `${SITE.title} on GitHub`,
-    icon: IconGitHub,
-  },
-  {
-    name: "X",
-    href: "https://x.com/username",
-    linkTitle: `${SITE.title} on X`,
-    icon: IconBrandX,
+    icon: "github",
+    active: true,
   },
   {
     name: "LinkedIn",
-    href: "https://www.linkedin.com/in/username/",
+    href: "https://www.linkedin.com/in/chaitanya-kulkarni-444478193/",
     linkTitle: `${SITE.title} on LinkedIn`,
-    icon: IconLinkedin,
+    icon: "linkedin",
+    active: true,
+  },
+  {
+    name: "X",
+    href: "https://x.com/your-handle-here",
+    linkTitle: `${SITE.title} on X`,
+    icon: "x",
+    active: false,
   },
   {
     name: "Mail",
-    href: "mailto:yourmail@gmail.com",
-    linkTitle: `Send an email to ${SITE.title}`,
-    icon: IconMail,
+    href: "mailto:xyz@gmail.com",
+    linkTitle: `Send email to ${SITE.title}`,
+    icon: "mail",
+    active: false,
   },
 ] as const;
 

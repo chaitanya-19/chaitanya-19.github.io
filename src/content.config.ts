@@ -4,6 +4,7 @@ import { SITE } from "@/config";
 
 export const BLOG_PATH = "src/data/blog";
 export const PROJECTS_PATH = "src/data/projects";
+export const PAPERS_PATH = "src/data/papers";
 
 const blog = defineCollection({
   loader: glob({ pattern: "**/[^_]*.md", base: `./${BLOG_PATH}` }),
@@ -38,4 +39,18 @@ const projects = defineCollection({
   }),
 });
 
-export const collections = { blog, projects };
+const papers = defineCollection({
+  loader: glob({ pattern: "**/[^_]*.md", base: `./${PAPERS_PATH}` }),
+  schema: z.object({
+    title: z.string(),
+    authors: z.array(z.string()),
+    venue: z.string(),
+    year: z.number(),
+    link: z.string().url(),
+    description: z.string().optional(),
+    featured: z.boolean().optional(),
+    draft: z.boolean().optional(),
+  }),
+});
+
+export const collections = { blog, projects, papers };

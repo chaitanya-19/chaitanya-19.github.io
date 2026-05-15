@@ -1,0 +1,27 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+type Props = CollectionEntry<"papers">;
+
+const { data } = Astro.props;
+const { title, authors, venue, year, link, description } = data;
+---
+
+<li class="my-6">
+  <a
+    href={link}
+    target="_blank"
+    rel="noopener noreferrer"
+    class:list={[
+      "inline-block text-lg font-medium text-accent",
+      "decoration-dashed underline-offset-4 hover:underline",
+      "focus-visible:no-underline focus-visible:underline-offset-0",
+    ]}
+  >
+    <h2>{title}</h2>
+  </a>
+  <p class="mt-1 text-sm text-muted-foreground">
+    {authors.join(", ")} &middot; {venue} {year}
+  </p>
+  {description && <p class="mt-2">{description}</p>}
+</li>

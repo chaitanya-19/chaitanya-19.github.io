@@ -25,7 +25,7 @@ const { title, authors, venue, year, link, description } = data;
       <>
         {i > 0 && ", "}
         {author === "Chaitanya Kulkarni"
-          ? <strong class="font-semibold text-foreground">{author}</strong>
+          ? <span class="text-accent font-medium">{author}</span>
           : author}
       </>
     ))}

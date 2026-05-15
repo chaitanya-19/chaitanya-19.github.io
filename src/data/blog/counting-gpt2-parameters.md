@@ -77,7 +77,7 @@ A few architectural choices to flag before we count anything:
 
 GPT-2 is **pre-norm** — LayerNorm sits _before_ attention and _before_ the MLP, not after. Position information comes from a **learned position embedding table**, not the sin/cos formulation from the original Transformer paper. The MLP uses **GELU**. Attention is plain multi-head — twelve query heads, twelve key heads, twelve value heads, all the same width. And the LM head is **tied** to the token embedding.
 
-One implementation note worth knowing now, because it'll show up in the count. We _conceptually_ think of attention as "12 heads, each with its own W_Q, W_K, W_V" — but none of that is physically separate in the actual code. GPT-2 stores **one big weight matrix** of shape `(768, 2304)` called `c_attn` that handles Q, K, _and_ V for all 12 heads in a single matmul:
+One implementation note worth knowing now, because it'll show up in the count. We _conceptually_ think of attention as "12 heads, each with its own W*Q, W_K, W_V" — but none of that is physically separate in the actual code. GPT-2 stores **one big weight matrix** of shape `(768, 2304)` called `c_attn` that handles Q, K, \_and* V for all 12 heads in a single matmul:
 
 ```
 X @ c_attn → (T, 768) @ (768, 2304) = (T, 2304)

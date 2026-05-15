@@ -33,17 +33,17 @@ export const SOCIALS = [
   },
   {
     name: "X",
-    href: "https://x.com/your-handle-here",
+    href: "https://x.com",
     linkTitle: `${SITE.title} on X`,
     icon: "x",
     active: false,
   },
   {
     name: "Mail",
-    href: "mailto:xyz@gmail.com",
+    href: "mailto:chaitukulk2000@gmail.com",
     linkTitle: `Send email to ${SITE.title}`,
     icon: "mail",
-    active: false,
+    active: true,
   },
 ] as const;
 

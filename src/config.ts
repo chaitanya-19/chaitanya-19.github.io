@@ -2,7 +2,7 @@ export const SITE = {
   website: "https://chaitanya-19.github.io/",
   author: "Chaitanya Kulkarni",
   profile: "https://github.com/chaitanya-19",
-  desc: "Modern LLM architecture, from vanilla GPT-2 to frontier models. A technical blog series for engineers who want to understand LLM internals at parameter-level depth.",
+  desc: "AI Engineer at Qlik. I build production agentic systems and write about LLM internals — parameters, attention, memory math — from first principles.",
   title: "Chaitanya Kulkarni",
   ogImage: "astropaper-og.jpg",
   lightAndDarkMode: true,

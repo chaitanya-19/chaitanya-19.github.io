@@ -3,92 +3,102 @@ import { getCollection } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
-import Socials from "@/components/Socials.astro";
-import LinkButton from "@/components/LinkButton.astro";
 import Card from "@/components/Card.astro";
-import getSortedPosts from "@/utils/getSortedPosts";
-import IconRss from "@/assets/icons/IconRss.svg";
+import ProjectCard from "@/components/ProjectCard.astro";
+import PaperCard from "@/components/PaperCard.astro";
+import HeroSection from "@/components/HeroSection.astro";
+import LinkButton from "@/components/LinkButton.astro";
 import IconArrowRight from "@/assets/icons/IconArrowRight.svg";
-import { SITE } from "@/config";
-import { SOCIALS } from "@/constants";
+import getSortedPosts from "@/utils/getSortedPosts";
 
 const posts = await getCollection("blog");
+const recentPosts = getSortedPosts(posts).slice(0, 3);
 
-const sortedPosts = getSortedPosts(posts);
-const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
-const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
+const allProjects = await getCollection("projects", ({ data }) => !data.draft);
+allProjects.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const featuredProjects = allProjects.filter(p => p.data.featured);
+const displayProjects = (
+  featuredProjects.length > 0 ? featuredProjects : allProjects
+).slice(0, 3);
+
+const allPapers = await getCollection("papers", ({ data }) => !data.draft);
+allPapers.sort((a, b) => b.data.year - a.data.year);
+const featuredPapers = allPapers.filter(p => p.data.featured);
+const displayPapers = (
+  featuredPapers.length > 0 ? featuredPapers : allPapers
+).slice(0, 2);
 ---
 
 <Layout>
   <Header />
   <main id="main-content" data-layout="index" class="app-layout">
-    <section id="hero" class:list={["pt-8 pb-6", "border-b border-border"]}>
-      <h1 class="my-4 inline-block text-4xl font-bold sm:my-8 sm:text-5xl">
-        Modern LLM Architecture
-      </h1>
-      
-
-        <span class="sr-only">RSS Feed</span>
-      </a>
-
-      <p>
-        A technical blog series taking you from vanilla GPT-2 to frontier models like Llama 3, Mixtral, and DeepSeek-V3. Each post counts every parameter, derives every shape, and quantifies what changes as architectures evolve.
-      </p>
-      <p>
-        Written by <a href="https://github.com/chaitanya-19" target="_blank" rel="noopener noreferrer">Chaitanya Kulkarni</a>, AI Engineer. Targeted at mid-level ML and infra engineers leveling up on model internals.
-      </p>
-
-      {
-        SOCIALS.length > 0 && (
-          <div class="mt-4 flex flex-col sm:flex-row sm:items-center">
-            <div class="mr-2 mb-1 whitespace-nowrap sm:mb-0">
-              
-            </div>
-            <Socials />
-          </div>
-        )
-      }
-    </section>
+    <HeroSection />
 
     {
-      featuredPosts.length > 0 && (
+      displayProjects.length > 0 && (
         <section
-          id="featured"
-          class:list={[
-            "pt-12 pb-6",
-            { "border-b border-border": recentPosts.length > 0 },
-          ]}
+          id="featured-projects"
+          class:list={["pt-12 pb-6", "border-b border-border"]}
         >
-          <h2 class="text-2xl font-semibold tracking-wide">Featured</h2>
+          <h2 class="text-2xl font-semibold tracking-wide">Projects</h2>
           <ul>
-            {featuredPosts.map(data => (
-              <Card variant="h3" {...data} />
+            {displayProjects.map(project => (
+              <ProjectCard {...project} />
             ))}
           </ul>
+          <div class="mt-2 text-right">
+            <LinkButton href="/projects">
+              All Projects
+              <IconArrowRight class="inline-block rtl:-rotate-180" />
+            </LinkButton>
+          </div>
         </section>
       )
     }
 
     {
       recentPosts.length > 0 && (
-        <section id="recent-posts" class="pt-12 pb-6">
-          <h2 class="text-2xl font-semibold tracking-wide">Recent Posts</h2>
+        <section
+          id="recent-posts"
+          class:list={[
+            "pt-12 pb-6",
+            { "border-b border-border": displayPapers.length > 0 },
+          ]}
+        >
+          <h2 class="text-2xl font-semibold tracking-wide">Blogs</h2>
           <ul>
-            {recentPosts.map(
-              (data, index) =>
-                index < SITE.postPerIndex && <Card variant="h3" {...data} />
-            )}
+            {recentPosts.map(data => (
+              <Card variant="h3" {...data} />
+            ))}
           </ul>
+          <div class="mt-2 text-right">
+            <LinkButton href="/posts">
+              All Posts
+              <IconArrowRight class="inline-block rtl:-rotate-180" />
+            </LinkButton>
+          </div>
         </section>
       )
     }
 
-    <div class="my-8 text-center">
-      <LinkButton href="/posts/">
-        All Posts
-        <IconArrowRight class="inline-block rtl:-rotate-180" />
-      </LinkButton>
-    </div>
+    {
+      displayPapers.length > 0 && (
+        <section id="featured-papers" class="pt-12 pb-6">
+          <h2 class="text-2xl font-semibold tracking-wide">Papers</h2>
+          <ul>
+            {displayPapers.map(paper => (
+              <PaperCard {...paper} />
+            ))}
+          </ul>
+          <div class="mt-2 text-right">
+            <LinkButton href="/papers">
+              All Papers
+              <IconArrowRight class="inline-block rtl:-rotate-180" />
+            </LinkButton>
+          </div>
+        </section>
+      )
+    }
   </main>
   <Footer />
 </Layout>

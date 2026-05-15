@@ -1,0 +1,23 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import Main from "@/layouts/Main.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import ProjectCard from "@/components/ProjectCard.astro";
+import { SITE } from "@/config";
+
+const projects = await getCollection("projects", ({ data }) => !data.draft);
+
+projects.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<Layout title={`Projects | ${SITE.title}`}>
+  <Header />
+  <Main pageTitle="Projects" pageDesc="Things I've built.">
+    <ul>
+      {projects.map(project => <ProjectCard {...project} />)}
+    </ul>
+  </Main>
+  <Footer />
+</Layout>

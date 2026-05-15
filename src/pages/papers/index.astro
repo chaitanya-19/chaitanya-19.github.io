@@ -1,0 +1,23 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import Main from "@/layouts/Main.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import PaperCard from "@/components/PaperCard.astro";
+import { SITE } from "@/config";
+
+const papers = await getCollection("papers", ({ data }) => !data.draft);
+
+papers.sort((a, b) => b.data.year - a.data.year);
+---
+
+<Layout title={`Papers | ${SITE.title}`}>
+  <Header />
+  <Main pageTitle="Papers" pageDesc="Research I've authored or co-authored.">
+    <ul>
+      {papers.map(paper => <PaperCard {...paper} />)}
+    </ul>
+  </Main>
+  <Footer />
+</Layout>

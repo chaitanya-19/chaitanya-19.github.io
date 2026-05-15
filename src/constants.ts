@@ -7,6 +7,7 @@ import IconWhatsapp from "@/assets/icons/IconWhatsapp.svg";
 import IconFacebook from "@/assets/icons/IconFacebook.svg";
 import IconTelegram from "@/assets/icons/IconTelegram.svg";
 import IconPinterest from "@/assets/icons/IconPinterest.svg";
+import IconGoogleScholar from "@/assets/icons/IconGoogleScholar.svg";
 import { SITE } from "@/config";
 
 interface Social {
@@ -21,31 +22,38 @@ export const SOCIALS = [
     name: "Github",
     href: "https://github.com/chaitanya-19",
     linkTitle: `${SITE.title} on GitHub`,
-    icon: "github",
+    icon: IconGitHub,
     active: true,
   },
   {
     name: "LinkedIn",
     href: "https://www.linkedin.com/in/chaitanya-kulkarni-444478193/",
     linkTitle: `${SITE.title} on LinkedIn`,
-    icon: "linkedin",
+    icon: IconLinkedin,
     active: true,
   },
   {
     name: "X",
-    href: "https://x.com/your-handle-here",
+    href: "https://x.com",
     linkTitle: `${SITE.title} on X`,
-    icon: "x",
+    icon: IconBrandX,
     active: false,
   },
   {
     name: "Mail",
-    href: "mailto:xyz@gmail.com",
+    href: "mailto:chaitukulk2000@gmail.com",
     linkTitle: `Send email to ${SITE.title}`,
-    icon: "mail",
-    active: false,
+    icon: IconMail,
+    active: true,
   },
-] as const;
+  {
+    name: "Google Scholar",
+    href: "https://scholar.google.com/citations?view_op=list_works&hl=en&hl=en&user=pPWWCmEAAAAJ",
+    linkTitle: `${SITE.title} on Google Scholar`,
+    icon: IconGoogleScholar,
+    active: true,
+  },
+];
 
 export const SHARE_LINKS: Social[] = [
   {

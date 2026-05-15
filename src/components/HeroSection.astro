@@ -1,0 +1,25 @@
+---
+import { SITE } from "@/config";
+import { SOCIALS } from "@/constants";
+import Socials from "@/components/Socials.astro";
+---
+
+<section id="hero" class:list={["pt-8 pb-6", "border-b border-border"]}>
+  <h1 class="my-4 text-4xl font-bold sm:my-8 sm:text-5xl">{SITE.title}</h1>
+  <p class="text-lg font-medium text-accent">AI Engineer at Qlik</p>
+  <p class="mt-4">
+    I build production agentic systems — retrieval pipelines, tool-using agents,
+    and the evaluation frameworks that keep them honest.
+  </p>
+  <p class="mt-2">
+    Outside of work I write about LLM internals: parameter counts, attention
+    math, and how architectures change as models scale.
+  </p>
+  {
+    SOCIALS.length > 0 && (
+      <div class="mt-6">
+        <Socials />
+      </div>
+    )
+  }
+</section>

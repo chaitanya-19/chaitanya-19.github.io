@@ -21,7 +21,15 @@ const { title, authors, venue, year, link, description } = data;
     <h2>{title}</h2>
   </a>
   <p class="mt-1 text-sm text-muted-foreground">
-    {authors.join(", ")} &middot; {venue} {year}
+    {authors.map((author, i) => (
+      <>
+        {i > 0 && ", "}
+        {author === "Chaitanya Kulkarni"
+          ? <strong class="font-semibold text-foreground">{author}</strong>
+          : author}
+      </>
+    ))}
   </p>
+  <p class="text-sm text-muted-foreground">{venue}, {year}</p>
   {description && <p class="mt-2">{description}</p>}
 </li>

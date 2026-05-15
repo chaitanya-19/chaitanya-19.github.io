@@ -21,31 +21,31 @@ export const SOCIALS = [
     name: "Github",
     href: "https://github.com/chaitanya-19",
     linkTitle: `${SITE.title} on GitHub`,
-    icon: "github",
+    icon: IconGitHub,
     active: true,
   },
   {
     name: "LinkedIn",
     href: "https://www.linkedin.com/in/chaitanya-kulkarni-444478193/",
     linkTitle: `${SITE.title} on LinkedIn`,
-    icon: "linkedin",
+    icon: IconLinkedin,
     active: true,
   },
   {
     name: "X",
     href: "https://x.com",
     linkTitle: `${SITE.title} on X`,
-    icon: "x",
+    icon: IconBrandX,
     active: false,
   },
   {
     name: "Mail",
     href: "mailto:chaitukulk2000@gmail.com",
     linkTitle: `Send email to ${SITE.title}`,
-    icon: "mail",
+    icon: IconMail,
     active: true,
   },
-] as const;
+];
 
 export const SHARE_LINKS: Social[] = [
   {

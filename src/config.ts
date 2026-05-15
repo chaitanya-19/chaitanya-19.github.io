@@ -3,13 +3,13 @@ export const SITE = {
   author: "Chaitanya Kulkarni",
   profile: "https://github.com/chaitanya-19",
   desc: "AI Engineer at Qlik. I build production agentic systems and write about LLM internals — parameters, attention, memory math — from first principles.",
-  title: "Chaitanya Kulkarni",
+  title: "Chaitanya K",
   ogImage: "astropaper-og.jpg",
   lightAndDarkMode: true,
   postPerIndex: 4,
   postPerPage: 4,
   scheduledPostMargin: 15 * 60 * 1000, // 15 minutes
-  showArchives: true,
+  showArchives: false,
   showBackButton: true,
   editPost: {
     enabled: false,

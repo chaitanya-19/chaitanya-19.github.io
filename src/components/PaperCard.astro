@@ -20,16 +20,20 @@ const { title, authors, venue, year, link, description } = data;
   >
     <h2>{title}</h2>
   </a>
-  <p class="mt-1 text-sm text-muted-foreground">
-    {authors.map((author, i) => (
-      <>
-        {i > 0 && ", "}
-        {author === "Chaitanya Kulkarni"
-          ? <span class="text-accent font-medium">{author}</span>
-          : author}
-      </>
-    ))}
+  <p class="text-muted-foreground mt-1 text-sm">
+    {
+      authors.map((author, i) => (
+        <>
+          {i > 0 && ", "}
+          {author === "Chaitanya Kulkarni" ? (
+            <span class="font-medium text-accent">{author}</span>
+          ) : (
+            author
+          )}
+        </>
+      ))
+    }
   </p>
-  <p class="text-sm text-muted-foreground">{venue}, {year}</p>
+  <p class="text-muted-foreground text-sm">{venue}, {year}</p>
   {description && <p class="mt-2">{description}</p>}
 </li>

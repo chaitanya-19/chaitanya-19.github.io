@@ -32,7 +32,10 @@
     "tailwindcss": "^4.1.18"
   },
   "pnpm": {
-    "onlyBuiltDependencies": ["esbuild", "sharp"]
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "sharp"
+    ]
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.6",

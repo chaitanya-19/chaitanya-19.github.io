@@ -7,10 +7,7 @@ import Footer from "@/components/Footer.astro";
 import ProjectCard from "@/components/ProjectCard.astro";
 import { SITE } from "@/config";
 
-const projects = await getCollection(
-  "projects",
-  ({ data }) => !data.draft
-);
+const projects = await getCollection("projects", ({ data }) => !data.draft);
 
 projects.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---

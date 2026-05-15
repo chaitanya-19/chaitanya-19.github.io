@@ -17,12 +17,16 @@ const recentPosts = getSortedPosts(posts).slice(0, 3);
 const allProjects = await getCollection("projects", ({ data }) => !data.draft);
 allProjects.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 const featuredProjects = allProjects.filter(p => p.data.featured);
-const displayProjects = (featuredProjects.length > 0 ? featuredProjects : allProjects).slice(0, 3);
+const displayProjects = (
+  featuredProjects.length > 0 ? featuredProjects : allProjects
+).slice(0, 3);
 
 const allPapers = await getCollection("papers", ({ data }) => !data.draft);
 allPapers.sort((a, b) => b.data.year - a.data.year);
 const featuredPapers = allPapers.filter(p => p.data.featured);
-const displayPapers = (featuredPapers.length > 0 ? featuredPapers : allPapers).slice(0, 2);
+const displayPapers = (
+  featuredPapers.length > 0 ? featuredPapers : allPapers
+).slice(0, 2);
 ---
 
 <Layout>

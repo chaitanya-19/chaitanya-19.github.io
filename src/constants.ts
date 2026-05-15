@@ -7,6 +7,7 @@ import IconWhatsapp from "@/assets/icons/IconWhatsapp.svg";
 import IconFacebook from "@/assets/icons/IconFacebook.svg";
 import IconTelegram from "@/assets/icons/IconTelegram.svg";
 import IconPinterest from "@/assets/icons/IconPinterest.svg";
+import IconGoogleScholar from "@/assets/icons/IconGoogleScholar.svg";
 import { SITE } from "@/config";
 
 interface Social {
@@ -43,6 +44,13 @@ export const SOCIALS = [
     href: "mailto:chaitukulk2000@gmail.com",
     linkTitle: `Send email to ${SITE.title}`,
     icon: IconMail,
+    active: true,
+  },
+  {
+    name: "Google Scholar",
+    href: "https://scholar.google.com/citations?view_op=list_works&hl=en&hl=en&user=pPWWCmEAAAAJ",
+    linkTitle: `${SITE.title} on Google Scholar`,
+    icon: IconGoogleScholar,
     active: true,
   },
 ];
